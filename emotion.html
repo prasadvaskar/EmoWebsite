@@ -1,0 +1,59 @@
+<html>
+<head>
+    <title>Capture picture from your webcam</title>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.js"></script>
+    <link rel="stylesheet" type="text/css" href="index.css">
+        <script type="text/javascript" src="index.js"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+    <section id="section1">
+        <!-- Image and text -->
+<nav  class="navbar navbar-light bg-dark">
+  <a class="navbar-brand text-danger" href="#">
+    <h2>Emotion Player</h2>
+  </a>
+</nav>
+        <ul  class="nav nav-pills">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">HOME</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active " href="emotion.html">EMOTION SCANNER</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="playlist.html">PLAYLIST</a>
+          </li>
+          
+        </ul>
+      </section>
+    <div id="camera" style="height:auto;width:auto; text-align:left;"></div>
+
+    <!--FOR THE SNAPSHOT-->
+    <input type="button" value="Take a Snap" id="btPic" onclick="takeSnapShot()" /> 
+    <p id="snapShot"></p>
+</body>
+
+<script>
+    // CAMERA SETTINGS.
+    Webcam.set({
+        width: 500,
+        height: 190,
+        image_format: 'jpeg',
+        jpeg_quality: 100
+    });
+    Webcam.attach('#camera');
+
+    // SHOW THE SNAPSHOT.
+    takeSnapShot = function () {
+        Webcam.snap(function (data_uri) {
+            document.getElementById('snapShot').innerHTML = 
+                '<img src="' + data_uri + '" width="700px" height="500px" />';
+        });
+    }
+</script>
+</html>
